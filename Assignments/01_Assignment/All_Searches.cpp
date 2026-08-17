@@ -20,6 +20,7 @@ string lastNames[10] = {"Sami", "Saifi", "Panchal", "Singh", "Kumar",
 
 void GenerateStudents(int n)
 {
+    // cout << "Name, Enroll, Marks" << endl;
     for (int i = 0; i < n; i++)
     {
         int f = rand() % 10;
@@ -27,6 +28,8 @@ void GenerateStudents(int n)
         students[i].name = firstNames[f] + " " + lastNames[l];
         students[i].enrollment = i + 1;
         students[i].marks = rand() % 101;
+
+        // cout << students[i].name << ", " << students[i].enrollment << ", " << students[i].marks << endl;
     }
 }
 
