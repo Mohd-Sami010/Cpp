@@ -121,7 +121,7 @@ void bucketSort(int arr[], int n, int maxValue)
     delete[] buckets;
     delete[] bucketSize;
 }
-void printArray(int arr[], int n)
+void PrintArray(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
@@ -154,7 +154,7 @@ int main()
     if (n <= 20)
     {
         cout << "\nOriginal Array:\n";
-        printArray(original, n);
+        PrintArray(original, n);
     }
 
     // Find max value for bucket sort range
@@ -229,13 +229,13 @@ int main()
     if (n <= 20)
     {
         cout << "\nCounting Sort:\n";
-        printArray(arr1, n);
+        PrintArray(arr1, n);
 
         cout << "\nRadix Sort:\n";
-        printArray(arr2, n);
+        PrintArray(arr2, n);
 
         cout << "\nBucket Sort:\n";
-        printArray(arr3, n);
+        PrintArray(arr3, n);
     }
 
     cout << "\nSORTING ALGORITHM PERFORMANCE\n";

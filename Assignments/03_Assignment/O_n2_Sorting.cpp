@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 void BubbleSort(int arr[], int n)
@@ -45,27 +47,29 @@ void InsertionSort(int arr[], int n)
         arr[j + 1] = key;
     }
 }
-
 void PrintArray(int arr[], int n)
 {
-    cout << "[";
     for (int i = 0; i < n; i++)
-    {
-        if (i < n - 1)
-            cout << arr[i] << ", ";
-        else
-            cout << arr[i];
-    }
-    cout << " ]" << endl;
+        cout << arr[i] << " ";
+    cout << endl;
 }
 
 int main()
 {
-    int n = 20;
-    int original[20] = {12, 45, 3, 67, 23, 89, 5, 34, 78, 1,
-                        56, 90, 22, 11, 99, 4, 60, 33, 18, 27};
+    int n;
+    cout << "Enter array size: ";
+    cin >> n;
 
-    int arr1[20], arr2[20], arr3[20];
+    srand(time(0));
+
+    int *original = new int[n];
+    for (int i = 0; i < n; i++)
+        original[i] = rand() % 10000;
+
+    int *arr1 = new int[n];
+    int *arr2 = new int[n];
+    int *arr3 = new int[n];
+
     for (int i = 0; i < n; i++)
     {
         arr1[i] = original[i];
@@ -73,20 +77,42 @@ int main()
         arr3[i] = original[i];
     }
 
-    cout << "Original array: ";
-    PrintArray(original, n);
+    if (n <= 20)
+    {
+        cout << "\nOriginal Array:\n";
+        PrintArray(original, n);
+    }
 
+    clock_t start1 = clock();
     BubbleSort(arr1, n);
-    cout << "\nSorted using Bubble Sort: ";
-    PrintArray(arr1, n);
+    clock_t end1 = clock();
+    clock_t ticks1 = end1 - start1;
 
+    clock_t start2 = clock();
     SelectionSort(arr2, n);
-    cout << "Sorted using Selection Sort: ";
-    PrintArray(arr2, n);
+    clock_t end2 = clock();
+    clock_t ticks2 = end2 - start2;
 
+    clock_t start3 = clock();
     InsertionSort(arr3, n);
-    cout << "Sorted using Insertion Sort: ";
-    PrintArray(arr3, n);
+    clock_t end3 = clock();
+    clock_t ticks3 = end3 - start3;
 
+    if (n <= 20)
+    {
+        cout << "\nBubble Sort:\n";
+        PrintArray(arr1, n);
+
+        cout << "\nSelection Sort:\n";
+        PrintArray(arr2, n);
+
+        cout << "\nInsertion Sort:\n";
+        PrintArray(arr3, n);
+    }
+    cout << "\nAlgorithm\t\tClock Ticks\n";
+    cout << "--------------------------------------------\n";
+    cout << "Bubble Sort\t\t" << ticks1 << endl;
+    cout << "Selection Sort\t\t" << ticks2 << endl;
+    cout << "Insertion Sort\t\t" << ticks3 << endl;
     return 0;
 }
