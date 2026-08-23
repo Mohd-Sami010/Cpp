@@ -2,7 +2,7 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
-void countingSort(int arr[], int n)
+void CountingSort(int arr[], int n)
 {
     int maxVal = arr[0];
     for (int i = 1; i < n; i++)
@@ -29,7 +29,7 @@ void countingSort(int arr[], int n)
 
     delete[] count;
 }
-int getMax(int arr[], int n)
+int GetMax(int arr[], int n)
 {
     int maxVal = arr[0];
     for (int i = 1; i < n; i++)
@@ -38,7 +38,7 @@ int getMax(int arr[], int n)
     return maxVal;
 }
 
-void countSortForRadix(int arr[], int n, int exp)
+void CountSortForRadix(int arr[], int n, int exp)
 {
     int *output = new int[n];
     int count[10] = {0};
@@ -62,14 +62,14 @@ void countSortForRadix(int arr[], int n, int exp)
     delete[] output;
 }
 
-void radixSort(int arr[], int n)
+void RadixSort(int arr[], int n)
 {
-    int maxVal = getMax(arr, n);
+    int maxVal = GetMax(arr, n);
 
     for (int exp = 1; maxVal / exp > 0; exp *= 10)
-        countSortForRadix(arr, n, exp);
+        CountSortForRadix(arr, n, exp);
 }
-void insertionSortForBucket(int arr[], int n)
+void InsertionSortForBucket(int arr[], int n)
 {
     for (int i = 1; i < n; i++)
     {
@@ -84,7 +84,7 @@ void insertionSortForBucket(int arr[], int n)
     }
 }
 
-void bucketSort(int arr[], int n, int maxValue)
+void BucketSort(int arr[], int n, int maxValue)
 {
     int bucketCount = n;
     int **buckets = new int *[bucketCount];
@@ -104,7 +104,7 @@ void bucketSort(int arr[], int n, int maxValue)
     }
 
     for (int i = 0; i < bucketCount; i++)
-        insertionSortForBucket(buckets[i], bucketSize[i]);
+        InsertionSortForBucket(buckets[i], bucketSize[i]);
 
     int index = 0;
     for (int i = 0; i < bucketCount; i++)
@@ -177,7 +177,7 @@ int main()
         for (int i = 0; i < n; i++)
             temp[i] = original[i];
 
-        countingSort(temp, n);
+        CountingSort(temp, n);
 
         if (r == repetitions - 1)
             for (int i = 0; i < n; i++)
@@ -196,7 +196,7 @@ int main()
         for (int i = 0; i < n; i++)
             temp[i] = original[i];
 
-        radixSort(temp, n);
+        RadixSort(temp, n);
 
         if (r == repetitions - 1)
             for (int i = 0; i < n; i++)
@@ -215,7 +215,7 @@ int main()
         for (int i = 0; i < n; i++)
             temp[i] = original[i];
 
-        bucketSort(temp, n, maxValue);
+        BucketSort(temp, n, maxValue);
 
         if (r == repetitions - 1)
             for (int i = 0; i < n; i++)

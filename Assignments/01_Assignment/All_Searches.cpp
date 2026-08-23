@@ -51,7 +51,7 @@ float LinearSearch(int n, int key, int &foundIndex)
     return float(endTime - startTime);
 }
 
-float binarySearch(int n, int key, int &foundIndex)
+float BinarySearch(int n, int key, int &foundIndex)
 {
     clock_t startTime = clock();
 
@@ -79,7 +79,7 @@ float binarySearch(int n, int key, int &foundIndex)
     clock_t endTime = clock();
     return float(endTime - startTime);
 }
-float directSearch(int n, int key, int &foundIndex)
+float DirectSearch(int n, int key, int &foundIndex)
 {
     clock_t startTime = clock();
 
@@ -127,8 +127,8 @@ int main()
 
         int idx1, idx2, idx3;
         float tLinear = LinearSearch(n, key, idx1);
-        float tBinary = binarySearch(n, key, idx2);
-        float tDirect = directSearch(n, key, idx3);
+        float tBinary = BinarySearch(n, key, idx2);
+        float tDirect = DirectSearch(n, key, idx3);
 
         cout << "Linear Search : found at index " << idx1
              << " | Time = " << tLinear << " clock ticks" << endl;
