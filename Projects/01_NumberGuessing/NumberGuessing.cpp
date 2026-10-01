@@ -18,13 +18,10 @@ int main()
         cin >> userNum;
 
         if (userNum > randNum)
-        {
             cout << "Chosen number is big" << endl;
-        }
         else if (userNum < randNum)
-        {
             cout << "Chosen number is small" << endl;
-        }
+
     } while (userNum != randNum);
     cout << "CORRECT" << endl;
 
